@@ -60,7 +60,8 @@ export const sendOTP = catchAsync(async (req, res, next) => {
     }
 
     // Generate OTP
-    const otp = generateOTP();
+    // const otp = generateOTP();
+    const otp = 1234;
     //calculate expires time and hash the otp
     const ttl = config.otp.ttl * 60 * 1000; //in milli seconds
     const expires = Date.now() + ttl;
@@ -75,7 +76,6 @@ export const sendOTP = catchAsync(async (req, res, next) => {
         message: "OTP send successfully",
         hash: `${hash}_${expires}`,
         phone,
-        otp,
     });
 });
 
