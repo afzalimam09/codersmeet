@@ -36,11 +36,15 @@ const createSendToken = async (user, statusCode, req, res) => {
     res.cookie("refreshToken", refreshToken, {
         maxAge: 1000 * 60 * 60 * 24 * 30,
         httpOnly: true,
+        sameSite: "none",
+        secure: true,
     });
 
     res.cookie("accessToken", accessToken, {
         maxAge: 1000 * 60 * 60 * 24 * 30,
         httpOnly: true,
+        sameSite: "none",
+        secure: true,
     });
 
     const { __v, updatedAt, ...others } = user._doc;
